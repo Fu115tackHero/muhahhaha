@@ -1,0 +1,192 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.wheel-container {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  margin: 20px auto;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  overflow: visible;
+  transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  border: 10px solid #fff; /* white ring */
+  background: conic-gradient(#eee 0deg 360deg); /* overwritten by JS */
+  box-sizing: border-box;
+  /* Hint to the browser this element will animate */
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.pin {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid #e74c3c;
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+#spin-button {
+  padding: 12px 30px;
+  background-color: #3498db;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#spin-button:hover {
+  background-color: #2980b9;
+}
+
+#spin-button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-height: 2em;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  color: #2980b9;
+}
+
+.wheel-label {
+  position: absolute;
+  display: inline-block;
+  white-space: nowrap;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  text-align: center;
+  max-width: 110px;
+  z-index: 3; /* make sure labels float above the wheel */
+  /* no background/shadow here — visual styling lives on the inner element */
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.wheel-label-inner {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  line-height: 1;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  /* Improve stacking and prevent shadow ghosting when parent is transformed */
+  position: relative;
+  z-index: 4;
+  /* Force GPU compositing for smoother rotation and avoid paint artifacts */
+  transform: translateZ(0);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .wheel-container {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  .wheel-container {
+    width: 300px;
+    height: 300px;
+    margin: 15px auto;
+  }
+
+  .segment span {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
+  .wheel-label {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+
+  /* On small screens, make the back link full width and aligned with content */
+  .back-link {
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+    display: block;
+    margin-top: 12px;
+  }
+}
+
+/* On wider screens keep the link centered and visually close to the spinner */
+@media screen and (min-width: 481px) {
+  .back-link {
+    margin-top: 12px;
+    align-self: center;
+  }
+}

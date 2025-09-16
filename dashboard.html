@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Dashboard - PopDrinkGo</title>
+    <link rel="stylesheet" href="style-dashboard.css" />
+    <style>
+      @media (max-width: 768px) {
+        .page-header,
+        .page-navigation,
+        .page-footer {
+          padding: 10px !important;
+        }
+        .page-content,
+        .page-sidebar {
+          padding: 10px !important;
+        }
+        .feature-section,
+        .info-section {
+          padding-bottom: 10px !important;
+        }
+        h2,
+        h3 {
+          font-size: 1.2em !important;
+        }
+        .small-logo {
+          height: 22px !important;
+        }
+        button {
+          font-size: 1em !important;
+          padding: 10px 18px !important;
+        }
+      }
+    </style>
+    <script
+      src="https://unpkg.com/html5-qrcode"
+      type="text/javascript"
+    ></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-left">
+        <img src="Logo PopDrinkGo.png" alt="Logo" class="small-logo" />
+        <span>PopDrinkGo</span>
+      </div>
+      <div class="header-center">
+        <p>Saldo Poin: <span class="point-count">5</span></p>
+      </div>
+      <div class="header-right">
+        <div class="user-profile">
+          <span class="username">John Doe</span>
+          <span class="user-id">john.doe@example.com</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="page-navigation">
+      <ul>
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Tukarkan Poin</a></li>
+        <li><a href="#">Riwayat</a></li>
+        <li><a href="#">Pengaturan</a></li>
+      </ul>
+    </nav>
+
+    <main class="page-main">
+      <aside class="page-sidebar">
+        <h3>Info Cepat</h3>
+        <p>Dapatkan 1 poin untuk setiap cup minuman!</p>
+        <p>Spin roda hadiahmu setiap hari!</p>
+      </aside>
+
+      <section class="page-content">
+        <h2>Selamat Datang!</h2>
+
+        <div class="feature-section">
+          <h3>Scan QR Code di Cup Minumanmu</h3>
+          <p>
+            Pindai kode QR yang ada di cup minuman PopDrinkGo untuk memutar roda
+            hadiah dan dapatkan poin atau diskon!
+          </p>
+          <button id="scan-button">Scan QR Code</button>
+        </div>
+
+        <div id="qr-reader-container" style="display: none">
+          <div id="qr-reader" style="width: 100%"></div>
+          <div class="qr-scanner-line"></div>
+          <div id="qr-reader-results"></div>
+          <button id="close-scanner">Tutup Pemindai</button>
+        </div>
+
+        <div class="info-section">
+          <h3>Tukarkan Poin</h3>
+          <p>Kumpulkan 10 poin dan tukar dengan 1 cup minuman gratis!</p>
+          <button>Tukarkan Poin</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>&copy; 2025 PopDrinkGo. Semua Hak Cipta Dilindungi.</p>
+      <a href="index.html" class="logout-link">Logout</a>
+    </footer>
+  </body>
+</html>

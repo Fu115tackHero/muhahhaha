@@ -1,0 +1,325 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "sidebar content content"
+    "footer footer footer";
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 250px 1fr 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  body {
+    grid-template-areas:
+      "header"
+      "nav"
+      "sidebar"
+      "content"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+  }
+}
+
+/* Penataan area-area */
+.page-header {
+  grid-area: header;
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-center,
+  .header-right {
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0;
+  }
+
+  .user-profile {
+    text-align: center;
+  }
+}
+
+.page-navigation {
+  grid-area: nav;
+  background-color: #34495e;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-navigation li {
+  margin: 5px 0;
+}
+
+.page-navigation a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.page-navigation a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.page-main {
+  grid-area: main;
+  display: contents;
+}
+
+.page-sidebar {
+  grid-area: sidebar;
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-right: 1px solid #dcdcdc;
+}
+
+.page-content {
+  grid-area: content;
+  background-color: #fff;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .page-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+
+  .feature-section,
+  .info-section {
+    margin-bottom: 20px;
+  }
+
+  #qr-reader {
+    width: 100% !important;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+  }
+}
+
+.page-footer {
+  grid-area: footer;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px;
+}
+.page-footer p {
+  color: white;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-center p {
+  color: white;
+}
+
+.small-logo {
+  height: 30px;
+  margin-right: 10px;
+  filter: invert(100%);
+}
+
+.header-right .user-profile {
+  background-color: #34495e;
+  color: #ecf0f1;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.user-id {
+  font-size: 0.8em;
+  opacity: 0.9;
+}
+
+.feature-section,
+.info-section {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+h2,
+h3 {
+  color: #333;
+}
+
+p {
+  color: #555;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #3498db; /* Warna biru yang cerah dan modern */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.logout-link {
+  display: inline-block;
+  color: #ecf0f1;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+
+.logout-link:hover {
+  color: #fff;
+}
+
+/* Responsif untuk layar mobile */
+@media (max-width: 768px) {
+  body {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "sidebar"
+      "footer";
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .header-left,
+  .header-center,
+  .header-right {
+    margin-bottom: 10px;
+  }
+
+  .page-navigation ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-sidebar {
+    border-right: none;
+    border-bottom: 1px solid #dcdcdc;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+}
+
+/* --- Efek Transisi Halaman --- */
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+body.page-loaded {
+  opacity: 1;
+}
+
+/* --- Animasi Garis Scanner --- */
+#qr-reader-container {
+  position: relative; /* Penting agar garis bisa diposisikan absolut */
+  overflow: hidden; /* Agar garis tidak keluar dari batas container */
+}
+
+.qr-scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #3498db,
+    transparent
+  ); /* Warna biru yang cocok dengan tema */
+  animation: scan-animation 2s infinite linear;
+  opacity: 0;
+}
+
+#qr-reader-container.active .qr-scanner-line {
+  opacity: 1;
+}
+
+@keyframes scan-animation {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
